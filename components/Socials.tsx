@@ -1,21 +1,14 @@
 import Link from "next/link";
 import type { IconType } from "react-icons";
 import {
-  RiGithubLine,
   RiLinkedinLine,
   RiMailLine,
 } from "react-icons/ri";
 
 export const socialData: { name: string; link: string; Icon: IconType }[] = [
   {
-    name: "Github",
-    link: "https://github.com/abinayasofficial2003-cyber",
-    Icon: RiGithubLine,
-  },
-
-  {
     name: "LinkedIn",
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/abinayas2003/",
     Icon: RiLinkedinLine,
   },
   {
@@ -25,10 +18,9 @@ export const socialData: { name: string; link: string; Icon: IconType }[] = [
   },
 ];
 
-
 const Socials = () => {
   return (
-    <div className="flex items-center gap-x-5 text-lg">
+    <div className="flex items-center gap-x-3.5 text-lg">
       {socialData.map((social, i) => (
         <Link
           key={i}
@@ -37,12 +29,12 @@ const Socials = () => {
           target="_blank"
           rel="noreferrer noopener"
           className={`${
-            social.name === "Github"
-              ? "bg-accent rounded-full p-1.25 hover:text-white"
-              : "hover:text-accent"
-          } transition-all duration-300`}
+            social.name === "LinkedIn"
+              ? "bg-accent rounded-full p-1.5 text-white hover:brightness-110 shadow-[0_0_15px_rgba(241,48,36,0.4)]"
+              : "text-white/80 hover:text-accent p-1.5"
+          } transition-all duration-300 flex items-center justify-center`}
         >
-          <social.Icon aria-hidden />
+          <social.Icon aria-hidden className="w-4 h-4" />
           <span className="sr-only">{social.name}</span>
         </Link>
       ))}

@@ -95,7 +95,7 @@ portfolio/
 
 - **Author**: Abinaya S
 - **Email**: [abinayaselsa@gmail.com](mailto:abinayaselsa@gmail.com)
-- **GitHub**: [@abinayasofficial2003-cyber](https://github.com/abinayasofficial2003-cyber)
+- **LinkedIn**: [abinayas2003](https://www.linkedin.com/in/abinayas2003/)
 
 
 ---

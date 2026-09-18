@@ -5,6 +5,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { BsArrowRight } from "react-icons/bs";
 import { HiEnvelope, HiPhone, HiShieldCheck } from "react-icons/hi2";
+import { RiLinkedinLine } from "react-icons/ri";
 
 import CyberAtmosphere from "@/components/CyberAtmosphere";
 import { fadeIn } from "@/variants";
@@ -146,22 +147,43 @@ const ContactSection = () => {
                 </div>
               </a>
 
-              <a
-                href="tel:9150553911"
-                className="flex items-center gap-x-3.5 p-3 rounded-xl bg-white/[0.04] border border-white/10 hover:border-accent/60 hover:shadow-[0_0_20px_rgba(241,48,36,0.2)] transition-all text-left group"
-              >
-                <div className="text-xl text-accent group-hover:scale-110 transition-transform">
-                  <HiPhone />
-                </div>
-                <div>
-                  <div className="text-[10px] font-mono text-white/40 uppercase">
-                    Phone / WhatsApp
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <a
+                  href="https://www.linkedin.com/in/abinayas2003/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="flex items-center gap-x-3 p-3 rounded-xl bg-white/[0.04] border border-white/10 hover:border-accent/60 hover:shadow-[0_0_20px_rgba(241,48,36,0.2)] transition-all text-left group"
+                >
+                  <div className="text-xl text-[#0077b5] group-hover:scale-110 transition-transform">
+                    <RiLinkedinLine />
                   </div>
-                  <div className="text-xs sm:text-sm font-semibold text-white group-hover:text-accent transition-colors">
-                    +91 9150553911
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-mono text-white/40 uppercase">
+                      LinkedIn
+                    </div>
+                    <div className="text-xs font-semibold text-white group-hover:text-accent transition-colors truncate">
+                      abinayas2003
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+
+                <a
+                  href="tel:9150553911"
+                  className="flex items-center gap-x-3 p-3 rounded-xl bg-white/[0.04] border border-white/10 hover:border-accent/60 hover:shadow-[0_0_20px_rgba(241,48,36,0.2)] transition-all text-left group"
+                >
+                  <div className="text-xl text-accent group-hover:scale-110 transition-transform">
+                    <HiPhone />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-mono text-white/40 uppercase">
+                      Phone / WhatsApp
+                    </div>
+                    <div className="text-xs font-semibold text-white group-hover:text-accent transition-colors">
+                      +91 9150553911
+                    </div>
+                  </div>
+                </a>
+              </div>
 
               {/* Responsible Testing Notice */}
               <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 text-left">
