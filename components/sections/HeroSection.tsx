@@ -59,36 +59,41 @@ const HeroSection = () => {
             Web Security • API Security • Mobile Security • Network Security
           </motion.div>
 
-          {/* Mobile View: Avatar with small bg-explosion in place of circular projects button */}
+          {/* Mobile View: Avatar with seamless soft-faded bg-explosion (Zero hard edges, perfect fit) */}
           <motion.div
             variants={fadeIn("up", 0.4)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="flex flex-col items-center justify-center xl:hidden relative mt-1 mb-3"
+            className="flex flex-col items-center justify-center xl:hidden relative mt-1 mb-2"
           >
-            <div className="relative w-[230px] sm:w-[270px] h-[250px] sm:h-[290px] flex items-end justify-center">
-              {/* Explosion background in small size matching the UI */}
+            <div className="relative w-[230px] sm:w-[270px] h-[235px] sm:h-[275px] flex items-end justify-center">
+              {/* Ambient crimson cyber glow */}
+              <div className="absolute inset-0 w-full h-full bg-[#f13024]/25 rounded-full blur-2xl pointer-events-none" />
+
+              {/* Seamless explosion background: focused on explosion texture with radial mask fade so there is zero black box */}
               <div
                 role="img"
-                className="w-full h-full absolute inset-0 bg-explosion bg-contain bg-center bg-no-repeat mix-blend-color-dodge pointer-events-none scale-110 opacity-90"
+                className="absolute inset-0 w-full h-full bg-explosion bg-cover bg-right bg-no-repeat mix-blend-color-dodge pointer-events-none scale-125 opacity-95 [mask-image:radial-gradient(circle_at_center,black_35%,transparent_72%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_35%,transparent_72%)]"
                 aria-hidden
               />
 
-              {/* Avatar Image */}
-              <Image
-                src={avatarImg}
-                alt="Abinaya S"
-                priority
-                className="relative z-10 w-auto h-full max-h-[240px] sm:max-h-[280px] object-contain object-bottom select-none pointer-events-none drop-shadow-[0_10px_25px_rgba(0,0,0,0.85)]"
-              />
+              {/* Avatar Image with soft bottom dissolve so her waist blends smoothly into the dark theme */}
+              <div className="relative z-10 w-full h-full flex items-end justify-center [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
+                <Image
+                  src={avatarImg}
+                  alt="Abinaya S"
+                  priority
+                  className="w-auto h-full max-h-[230px] sm:max-h-[270px] object-contain object-bottom select-none pointer-events-none drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)]"
+                />
+              </div>
             </div>
 
             {/* Mobile Request Assessment Button */}
             <Link
               href="#contact"
               onClick={handleScrollToContact}
-              className="mt-3 btn rounded-full border border-white/40 px-6 h-9 transition-all duration-300 flex items-center justify-center hover:border-accent hover:text-accent font-light text-xs uppercase tracking-wider bg-black/50 backdrop-blur-sm z-10"
+              className="mt-2.5 btn rounded-full border border-white/40 px-6 h-9 transition-all duration-300 flex items-center justify-center hover:border-accent hover:text-accent font-light text-xs uppercase tracking-wider bg-black/60 backdrop-blur-md z-10 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
             >
               Request Assessment
             </Link>
