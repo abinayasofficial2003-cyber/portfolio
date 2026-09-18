@@ -24,63 +24,57 @@ const HeroSection = () => {
     <div className="bg-primary/60 w-full min-h-screen xl:h-screen xl:h-[100dvh] relative overflow-hidden flex items-center justify-center">
       <div className="w-full h-full bg-linear-to-r from-primary/10 via-black/30 to-black/10 flex items-center justify-center">
         <div className="text-center flex flex-col justify-between pt-16 sm:pt-20 xl:pt-40 pb-0 xl:pb-0 xl:text-left h-full min-h-screen xl:min-h-0 container mx-auto z-10">
-          <motion.h1
-            variants={fadeIn("down", 0.2)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="h1 text-[26px] sm:text-[34px] xl:text-[54px] 2xl:text-[60px] leading-tight mb-3 sm:mb-6"
-          >
-            ABINAYA S <br />
-            <span className="text-accent">
-              Application Security <br /> & Cybersecurity
-            </span>
-          </motion.h1>
+          <div className="flex flex-col items-center xl:items-start max-w-sm sm:max-w-md xl:max-w-xl mx-auto xl:mx-0">
+            <motion.h1
+              variants={fadeIn("down", 0.2)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              className="h1 text-[24px] sm:text-[32px] xl:text-[54px] 2xl:text-[60px] leading-tight mb-2 sm:mb-4"
+            >
+              ABINAYA S <br />
+              <span className="text-accent">
+                Application Security <br /> & Cybersecurity
+              </span>
+            </motion.h1>
 
-          <motion.p
-            variants={fadeIn("down", 0.3)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="text-xs sm:text-sm xl:text-base max-w-sm sm:max-w-md xl:max-w-xl mx-auto xl:mx-0 mb-3 xl:mb-6 text-white/70 font-light"
-          >
-            I help businesses identify security vulnerabilities across web
-            applications, APIs, mobile applications, and network environments
-            and understand how to fix them.
-          </motion.p>
+            <motion.p
+              variants={fadeIn("down", 0.3)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              className="text-xs sm:text-sm xl:text-base max-w-xs sm:max-w-md xl:max-w-xl mx-auto xl:mx-0 mb-2.5 sm:mb-4 text-white/70 font-light leading-relaxed"
+            >
+              I help businesses identify security vulnerabilities across web
+              applications, APIs, mobile applications, and network environments
+              and understand how to fix them.
+            </motion.p>
 
-          <motion.div
-            variants={fadeIn("down", 0.35)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="text-[11px] sm:text-xs font-semibold tracking-wider text-accent uppercase mb-6 sm:mb-8 max-w-sm xl:max-w-xl mx-auto xl:mx-0"
-          >
-            Web Security • API Security • Mobile Security • Network Security
-          </motion.div>
+            <motion.div
+              variants={fadeIn("down", 0.35)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              className="text-[10px] sm:text-xs font-semibold tracking-wider text-accent uppercase mb-2 sm:mb-6 max-w-xs sm:max-w-md xl:max-w-xl mx-auto xl:mx-0"
+            >
+              Web Security • API Security • Mobile Security • Network Security
+            </motion.div>
+          </div>
 
-          {/* Mobile View: Avatar & Explosion placed from the bottom with top fade only on background */}
+          {/* Mobile View: Avatar placed from the bottom */}
           <motion.div
             variants={fadeIn("up", 0.4)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="flex xl:hidden relative w-full justify-center items-end mt-auto pointer-events-none select-none"
+            className="flex xl:hidden relative w-full justify-center items-end mt-auto pointer-events-none select-none pb-0"
           >
-            {/* Background explosion image placed from the bottom with top fade effect only */}
-            <div
-              role="img"
-              className="absolute bottom-0 inset-x-0 w-full h-[280px] sm:h-[340px] bg-explosion bg-cover bg-bottom bg-no-repeat mix-blend-color-dodge opacity-90 [mask-image:linear-gradient(to_bottom,transparent_0%,black_25%,black_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_25%,black_100%)]"
-              aria-hidden
-            />
-
-            {/* Avatar image placed from the bottom */}
-            <div className="relative z-10 flex items-end justify-center w-full max-w-[320px] sm:max-w-[380px] h-[280px] sm:h-[340px]">
+            <div className="relative z-10 flex items-end justify-center w-full max-w-[320px] sm:max-w-[380px] h-[330px] sm:h-[390px]">
               <Image
                 src={avatarImg}
                 alt="Abinaya S"
                 priority
-                className="w-auto h-full max-h-[280px] sm:max-h-[340px] object-contain object-bottom drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]"
+                className="w-auto h-full max-h-[330px] sm:max-h-[390px] object-contain object-bottom drop-shadow-[0_15px_35px_rgba(0,0,0,0.85)]"
               />
             </div>
           </motion.div>
@@ -113,15 +107,27 @@ const HeroSection = () => {
           </motion.p>
         </div>
       </div>
-      <div className="w-7xl h-full absolute right-0 bottom-0 pointer-events-none">
+      <div className="w-full xl:w-7xl h-full absolute right-0 bottom-0 pointer-events-none overflow-hidden">
+        {/* Desktop explosion */}
         <div
           role="img"
-          className="bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0"
+          className="hidden xl:block bg-explosion bg-cover bg-right bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0"
           aria-hidden
         />
 
+        {/* Mobile explosion placed from the bottom with top fade effect only */}
+        <div
+          role="img"
+          className="block xl:hidden absolute bottom-0 left-1/2 -translate-x-[76%] w-[640px] sm:w-[720px] h-[360px] sm:h-[420px] bg-explosion bg-cover bg-no-repeat mix-blend-color-dodge translate-z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0%,black_25%,black_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_25%,black_100%)]"
+          aria-hidden
+        />
+
+        {/* Mobile ambient crimson glow */}
+        <div className="block xl:hidden absolute bottom-10 left-1/2 -translate-x-1/2 w-[260px] h-[260px] bg-[#f13024]/25 rounded-full blur-3xl pointer-events-none" />
+
         <ParticlesContainer />
 
+        {/* Desktop avatar */}
         <motion.div
           variants={fadeIn("up", 0.5)}
           initial="hidden"
