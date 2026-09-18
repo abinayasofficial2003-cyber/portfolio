@@ -23,14 +23,14 @@ const HeroSection = () => {
   return (
     <div className="bg-primary/60 w-full min-h-screen xl:h-screen xl:h-[100dvh] relative overflow-hidden flex items-center justify-center">
       <div className="w-full h-full bg-linear-to-r from-primary/10 via-black/30 to-black/10 flex items-center justify-center">
-        <div className="text-center flex flex-col justify-between pt-16 sm:pt-20 xl:pt-40 pb-0 xl:pb-0 xl:text-left h-full min-h-screen xl:min-h-0 container mx-auto z-10">
+        <div className="text-center flex flex-col justify-between pt-24 sm:pt-28 xl:pt-40 pb-0 xl:pb-0 xl:text-left h-full min-h-screen xl:min-h-0 container mx-auto z-10">
           <div className="flex flex-col items-center xl:items-start max-w-sm sm:max-w-md xl:max-w-xl mx-auto xl:mx-0">
             <motion.h1
               variants={fadeIn("down", 0.2)}
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="h1 text-[24px] sm:text-[32px] xl:text-[54px] 2xl:text-[60px] leading-tight mb-2 sm:mb-4"
+              className="h1 text-[26px] sm:text-[34px] xl:text-[54px] 2xl:text-[60px] leading-tight mb-3 sm:mb-4"
             >
               ABINAYA S <br />
               <span className="text-accent">
@@ -43,7 +43,7 @@ const HeroSection = () => {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="text-xs sm:text-sm xl:text-base max-w-xs sm:max-w-md xl:max-w-xl mx-auto xl:mx-0 mb-2.5 sm:mb-4 text-white/70 font-light leading-relaxed"
+              className="text-xs sm:text-sm xl:text-base max-w-xs sm:max-w-md xl:max-w-xl mx-auto xl:mx-0 mb-3 sm:mb-5 text-white/70 font-light leading-relaxed"
             >
               I help businesses identify security vulnerabilities across web
               applications, APIs, mobile applications, and network environments
@@ -55,7 +55,7 @@ const HeroSection = () => {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="text-[10px] sm:text-xs font-semibold tracking-wider text-accent uppercase mb-2 sm:mb-6 max-w-xs sm:max-w-md xl:max-w-xl mx-auto xl:mx-0"
+              className="text-[10px] sm:text-xs font-semibold tracking-wider text-accent uppercase mb-3 sm:mb-6 max-w-xs sm:max-w-md xl:max-w-xl mx-auto xl:mx-0"
             >
               Web Security • API Security • Mobile Security • Network Security
             </motion.div>
@@ -69,12 +69,12 @@ const HeroSection = () => {
             exit="hidden"
             className="flex xl:hidden relative w-full justify-center items-end mt-auto pointer-events-none select-none pb-0"
           >
-            <div className="relative z-10 flex items-end justify-center w-full max-w-[320px] sm:max-w-[380px] h-[330px] sm:h-[390px]">
+            <div className="relative z-10 flex items-end justify-center w-full max-w-[320px] sm:max-w-[380px] h-[340px] sm:h-[400px]">
               <Image
                 src={avatarImg}
                 alt="Abinaya S"
                 priority
-                className="w-auto h-full max-h-[330px] sm:max-h-[390px] object-contain object-bottom drop-shadow-[0_15px_35px_rgba(0,0,0,0.85)]"
+                className="w-auto h-full max-h-[340px] sm:max-h-[400px] object-contain object-bottom drop-shadow-[0_15px_35px_rgba(0,0,0,0.85)]"
               />
             </div>
           </motion.div>
