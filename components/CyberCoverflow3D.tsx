@@ -212,7 +212,7 @@ export default function CyberCoverflow3D() {
       {/* Top Filter Chips & Navigation Toolbar */}
       <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3 px-2">
         {/* Category Tabs */}
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-black/40 border border-white/10 overflow-x-auto max-w-full">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-xl bg-black/40 border border-white/10 w-full sm:w-auto max-w-md mx-auto">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -222,7 +222,7 @@ export default function CyberCoverflow3D() {
                   setActiveCategory(cat);
                   setActiveIndex(0);
                 }}
-                className={`px-3 py-1 rounded-lg text-[11px] font-mono transition-all duration-300 whitespace-nowrap cursor-pointer ${isActive
+                className={`px-2.5 sm:px-3 py-1 rounded-lg text-[11px] font-mono transition-all duration-300 whitespace-nowrap cursor-pointer ${isActive
                   ? "bg-[#f13024] text-white font-semibold shadow-[0_0_12px_rgba(241,48,36,0.5)]"
                   : "text-white/60 hover:text-white hover:bg-white/5"
                   }`}

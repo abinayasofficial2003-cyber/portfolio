@@ -27,6 +27,14 @@
   padding-inline: 15px;
 }
 
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .translate-z-0 {
   transform: translateZ(0px);
 }
@@ -53,6 +61,7 @@
   /* Custom sleek scrollbar matching dark cyber crimson aesthetic */
   ::-webkit-scrollbar {
     width: 8px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: #131424;

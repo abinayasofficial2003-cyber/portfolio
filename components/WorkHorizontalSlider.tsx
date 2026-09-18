@@ -196,7 +196,7 @@ export default function WorkHorizontalSlider() {
       {/* Top Filter Chips & Navigation Controls */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Category Filter Tabs */}
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-black/40 border border-white/10 overflow-x-auto max-w-full">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-xl bg-black/40 border border-white/10 w-full sm:w-auto max-w-md mx-auto">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (

@@ -133,43 +133,43 @@ const ApproachSection = () => {
           className="flex-1 w-full max-w-xl flex flex-col justify-start xl:pt-2"
         >
           {/* FIXED TAB BAR (Stationary Header) */}
-          <div className="flex flex-wrap gap-1.5 sm:gap-2 p-1.5 rounded-xl bg-black/50 border border-white/10 w-max mx-auto xl:mx-0 mb-3.5 font-mono text-xs shrink-0">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-1.5 sm:gap-2 p-1.5 rounded-xl bg-black/50 border border-white/10 w-full sm:w-max max-w-md xl:max-w-none mx-auto xl:mx-0 mb-3.5 font-mono text-xs shrink-0">
             <button
               onClick={() => setActiveTab("workflow")}
-              className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition-all cursor-pointer text-center text-[11px] sm:text-xs ${
                 activeTab === "workflow"
                   ? "bg-[#f13024] text-white font-bold shadow-[0_0_15px_rgba(241,48,36,0.5)]"
-                  : "text-white/60 hover:text-white"
+                  : "text-white/60 hover:text-white hover:bg-white/5"
               }`}
             >
               6-Phase Workflow
             </button>
             <button
               onClick={() => setActiveTab("methodology")}
-              className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition-all cursor-pointer text-center text-[11px] sm:text-xs ${
                 activeTab === "methodology"
                   ? "bg-[#f13024] text-white font-bold shadow-[0_0_15px_rgba(241,48,36,0.5)]"
-                  : "text-white/60 hover:text-white"
+                  : "text-white/60 hover:text-white hover:bg-white/5"
               }`}
             >
               Methodology
             </button>
             <button
               onClick={() => setActiveTab("report")}
-              className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition-all cursor-pointer text-center text-[11px] sm:text-xs ${
                 activeTab === "report"
                   ? "bg-[#f13024] text-white font-bold shadow-[0_0_15px_rgba(241,48,36,0.5)]"
-                  : "text-white/60 hover:text-white"
+                  : "text-white/60 hover:text-white hover:bg-white/5"
               }`}
             >
               Report Deliverable
             </button>
             <button
               onClick={() => setActiveTab("deliverables")}
-              className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition-all cursor-pointer text-center text-[11px] sm:text-xs ${
                 activeTab === "deliverables"
                   ? "bg-[#f13024] text-white font-bold shadow-[0_0_15px_rgba(241,48,36,0.5)]"
-                  : "text-white/60 hover:text-white"
+                  : "text-white/60 hover:text-white hover:bg-white/5"
               }`}
             >
               What You Receive

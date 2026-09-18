@@ -673,7 +673,7 @@ export default function SkillsSection() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar max-w-full sm:max-w-4xl mx-auto px-2 py-1.5 mb-2"
+            className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-full sm:max-w-4xl mx-auto px-2 py-1 mb-2.5"
           >
             {CATEGORIES.map((cat) => {
               const isSelected = activeCategory === cat.id;
@@ -681,7 +681,7 @@ export default function SkillsSection() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3 py-1 rounded-full text-[11px] font-mono transition-all duration-300 cursor-pointer border whitespace-nowrap shrink-0 ${isSelected
+                  className={`px-2.5 sm:px-3 py-1 rounded-full text-[10.5px] sm:text-[11px] font-mono transition-all duration-300 cursor-pointer border whitespace-nowrap ${isSelected
                       ? "bg-[#f13024] text-white font-semibold border-[#f13024] shadow-[0_0_15px_rgba(241,48,36,0.6)]"
                       : "bg-black/60 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/30 border-white/10"
                     }`}
