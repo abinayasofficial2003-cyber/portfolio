@@ -42,7 +42,7 @@ export default function FaqSection() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-2.5">
+    <div className="w-full space-y-2">
       {faqList.map((item, idx) => {
         const isOpen = openIdx === idx;
         return (
@@ -50,26 +50,27 @@ export default function FaqSection() {
             key={idx}
             className={`rounded-xl border transition-all duration-200 overflow-hidden ${
               isOpen
-                ? "bg-[rgba(65,47,123,0.25)] border-accent/40"
-                : "bg-[rgba(65,47,123,0.12)] border-white/10 hover:border-white/20"
+                ? "bg-[#f13024]/10 border-[#f13024]/40 shadow-[0_0_15px_rgba(241,48,36,0.1)]"
+                : "bg-black/50 border-white/10 hover:border-white/20"
             }`}
           >
             <button
               onClick={() => toggle(idx)}
-              className="w-full px-4 py-3.5 text-left flex items-center justify-between gap-4 cursor-pointer"
+              className="w-full px-3.5 py-2.5 text-left flex items-center justify-between gap-3 cursor-pointer"
             >
-              <span className="text-xs sm:text-sm font-semibold text-white">
+              <span className="text-xs sm:text-[13px] font-medium text-white flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                 {item.q}
               </span>
               <HiChevronDown
-                className={`text-base text-accent shrink-0 transition-transform duration-200 ${
+                className={`text-sm text-accent shrink-0 transition-transform duration-200 ${
                   isOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
             {isOpen && (
-              <div className="px-4 pb-4 pt-1 text-xs text-white/70 font-light leading-relaxed border-t border-white/5">
+              <div className="px-3.5 pb-3 pt-1 text-[11px] sm:text-xs text-white/70 font-light leading-relaxed border-t border-white/5 bg-black/20">
                 {item.a}
               </div>
             )}
@@ -79,3 +80,4 @@ export default function FaqSection() {
     </div>
   );
 }
+

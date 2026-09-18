@@ -75,7 +75,7 @@ const ApproachSection = () => {
       />
       <Circles />
 
-      <div className="container mx-auto h-full max-h-[88vh] flex flex-col xl:flex-row gap-x-8 items-center justify-between z-10 py-4">
+      <div className="container mx-auto h-full max-h-[92vh] flex flex-col xl:flex-row gap-x-8 items-center justify-between z-10 pt-16 sm:pt-18 xl:pt-20 pb-3">
         {/* Left Column: Heading & 3D Model */}
         <div className="flex-1 flex flex-col justify-center max-w-lg text-center xl:text-left">
           <motion.div
@@ -94,7 +94,7 @@ const ApproachSection = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="h2 text-[26px] sm:text-[34px] xl:text-[42px] mb-2 leading-tight"
+            className="h2 text-[26px] sm:text-[34px] xl:text-[40px] mb-2 leading-tight"
           >
             From discovery to <span className="text-accent">remediation.</span>
           </motion.h2>
@@ -124,16 +124,16 @@ const ApproachSection = () => {
           </motion.div>
         </div>
 
-        {/* Right Column: Approach Tabs & Panels */}
+        {/* Right Column: Rock-Solid Stationary Tabs & Panels */}
         <motion.div
           variants={fadeIn("left", 0.3)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="flex-1 w-full max-w-xl flex flex-col justify-center"
+          className="flex-1 w-full max-w-xl flex flex-col justify-start xl:pt-2"
         >
-          {/* Tabs */}
-          <div className="flex flex-wrap gap-2 p-1.5 rounded-xl bg-black/40 border border-white/10 w-max mx-auto xl:mx-0 mb-4 font-mono text-xs">
+          {/* FIXED TAB BAR (Stationary Header) */}
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 p-1.5 rounded-xl bg-black/50 border border-white/10 w-max mx-auto xl:mx-0 mb-3.5 font-mono text-xs shrink-0">
             <button
               onClick={() => setActiveTab("workflow")}
               className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
@@ -176,131 +176,158 @@ const ApproachSection = () => {
             </button>
           </div>
 
-          {/* Tab 1: 6-Phase Workflow */}
-          {activeTab === "workflow" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[340px] overflow-y-auto pr-1 text-left">
-              {workflowSteps.map((step, idx) => (
-                <div
-                  key={idx}
-                  className="bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/10 rounded-xl p-3 hover:border-[#f13024]/60 transition-all duration-200 group"
-                >
-                  <div className="flex items-center gap-x-2 font-mono text-xs font-bold text-accent mb-1">
-                    <span className="w-5 h-5 rounded bg-accent/20 flex items-center justify-center text-[10px]">
-                      {step.num}
-                    </span>
-                    <span className="uppercase text-white group-hover:text-accent transition-colors">
-                      {step.title}
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-white/60 font-light leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Tab 2: Methodology Frameworks */}
-          {activeTab === "methodology" && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[340px] overflow-y-auto pr-1 text-left">
-              {frameworks.map((fw, idx) => (
-                <div
-                  key={idx}
-                  className="bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/10 rounded-xl p-3.5 hover:border-[#f13024]/60 transition-all flex flex-col justify-center min-h-[85px]"
-                >
-                  <div className="font-mono text-xs font-bold text-accent mb-1">
-                    {fw.label}
-                  </div>
-                  <div className="text-[11px] text-white/60 font-light leading-snug">
-                    {fw.sub}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Tab 3: Report Deliverable Preview */}
-          {activeTab === "report" && (
-            <div className="bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/10 rounded-xl p-4 text-left max-h-[340px] overflow-y-auto space-y-3">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                <div className="flex items-center gap-2">
-                  <HiDocumentText className="text-xl text-accent" />
-                  <div>
-                    <div className="text-[11px] font-mono text-accent font-bold uppercase">
-                      SECURITY ASSESSMENT REPORT
+          {/* FIXED-HEIGHT CONTENT CONTAINER (Zero layout shift on tab change) */}
+          <div className="h-[310px] sm:h-[325px] xl:h-[335px] w-full relative overflow-hidden">
+            {/* Tab 1: 6-Phase Workflow */}
+            {activeTab === "workflow" && (
+              <motion.div
+                key="workflow"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 h-full overflow-y-auto pr-1 text-left"
+              >
+                {workflowSteps.map((step, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/10 rounded-xl p-3 hover:border-[#f13024]/60 transition-all duration-200 group flex flex-col justify-center"
+                  >
+                    <div className="flex items-center gap-x-2 font-mono text-xs font-bold text-accent mb-1">
+                      <span className="w-5 h-5 rounded bg-accent/20 flex items-center justify-center text-[10px]">
+                        {step.num}
+                      </span>
+                      <span className="uppercase text-white group-hover:text-accent transition-colors">
+                        {step.title}
+                      </span>
                     </div>
-                    <div className="text-xs font-semibold text-white">
-                      Sanitized Technical Findings Preview
+                    <p className="text-[11px] text-white/60 font-light leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
+            {/* Tab 2: Methodology Frameworks */}
+            {activeTab === "methodology" && (
+              <motion.div
+                key="methodology"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 h-full overflow-y-auto pr-1 text-left"
+              >
+                {frameworks.map((fw, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/10 rounded-xl p-3.5 hover:border-[#f13024]/60 transition-all flex flex-col justify-center"
+                  >
+                    <div className="font-mono text-xs font-bold text-accent mb-1">
+                      {fw.label}
+                    </div>
+                    <div className="text-[11px] text-white/60 font-light leading-snug">
+                      {fw.sub}
                     </div>
                   </div>
-                </div>
-                <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-accent/20 text-accent border border-accent/30 font-bold">
-                  HIGH / CVSS 8.5
-                </span>
-              </div>
+                ))}
+              </motion.div>
+            )}
 
-              <div>
-                <div className="font-mono text-xs text-white/90 font-bold mb-1">
-                  Finding #01: Broken Object Level Authorization (BOLA)
-                </div>
-                <p className="text-[11px] text-white/60 font-light leading-relaxed mb-2">
-                  Authenticated users can access and modify billing records of other
-                  tenants by manipulating user_id parameters.
-                </p>
-                <div className="p-2.5 bg-black/60 rounded-lg border border-white/10 font-mono text-[10px] text-accent/90 mb-2">
-                  GET /api/v2/users/89410/billing HTTP/2
-                  <br />
-                  Host: api.target-client.com
-                  <br />
-                  Authorization: Bearer &lt;Attacker_Token&gt;
-                </div>
-                <div className="text-[11px] text-emerald-400 font-light">
-                  <span className="font-bold">Remediation:</span> Implement tenant
-                  ownership validation assertions before returning object data.
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Tab 4: What You Receive */}
-          {activeTab === "deliverables" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[340px] overflow-y-auto pr-1 text-left">
-              {[
-                {
-                  title: "Detailed Findings",
-                  desc: "Clearly documented vulnerabilities with technical details and supporting evidence.",
-                },
-                {
-                  title: "Risk & Impact",
-                  desc: "Understand the security significance of each confirmed finding.",
-                },
-                {
-                  title: "Remediation Guidance",
-                  desc: "Practical recommendations to help address identified vulnerabilities.",
-                },
-                {
-                  title: "Retest Validation",
-                  desc: "Where included, remediation is retested to verify fixes.",
-                },
-              ].map((deliv, idx) => (
-                <div
-                  key={idx}
-                  className="bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/10 rounded-xl p-3 hover:border-[#f13024]/60 transition-all"
-                >
-                  <div className="flex items-center gap-x-2 text-accent font-bold text-xs mb-1">
-                    <HiShieldCheck className="text-base shrink-0" />
-                    <span>{deliv.title}</span>
+            {/* Tab 3: Report Deliverable Preview */}
+            {activeTab === "report" && (
+              <motion.div
+                key="report"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/10 rounded-xl p-4 text-left h-full overflow-y-auto space-y-3"
+              >
+                <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                  <div className="flex items-center gap-2">
+                    <HiDocumentText className="text-xl text-accent" />
+                    <div>
+                      <div className="text-[11px] font-mono text-accent font-bold uppercase">
+                        SECURITY ASSESSMENT REPORT
+                      </div>
+                      <div className="text-xs font-semibold text-white">
+                        Sanitized Technical Findings Preview
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-[11px] text-white/60 font-light leading-relaxed">
-                    {deliv.desc}
-                  </p>
+                  <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-accent/20 text-accent border border-accent/30 font-bold">
+                    HIGH / CVSS 8.5
+                  </span>
                 </div>
-              ))}
-            </div>
-          )}
 
-          {/* Bottom Action */}
-          <div className="mt-4 flex justify-center xl:justify-start">
+                <div>
+                  <div className="font-mono text-xs text-white/90 font-bold mb-1">
+                    Finding #01: Broken Object Level Authorization (BOLA)
+                  </div>
+                  <p className="text-[11px] text-white/60 font-light leading-relaxed mb-2">
+                    Authenticated users can access and modify billing records of other
+                    tenants by manipulating user_id parameters.
+                  </p>
+                  <div className="p-2.5 bg-black/60 rounded-lg border border-white/10 font-mono text-[10px] text-accent/90 mb-2">
+                    GET /api/v2/users/89410/billing HTTP/2
+                    <br />
+                    Host: api.target-client.com
+                    <br />
+                    Authorization: Bearer &lt;Attacker_Token&gt;
+                  </div>
+                  <div className="text-[11px] text-emerald-400 font-light">
+                    <span className="font-bold">Remediation:</span> Implement tenant
+                    ownership validation assertions before returning object data.
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Tab 4: What You Receive */}
+            {activeTab === "deliverables" && (
+              <motion.div
+                key="deliverables"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 h-full overflow-y-auto pr-1 text-left"
+              >
+                {[
+                  {
+                    title: "Detailed Findings",
+                    desc: "Clearly documented vulnerabilities with technical details and supporting evidence.",
+                  },
+                  {
+                    title: "Risk & Impact",
+                    desc: "Understand the security significance of each confirmed finding.",
+                  },
+                  {
+                    title: "Remediation Guidance",
+                    desc: "Practical recommendations to help address identified vulnerabilities.",
+                  },
+                  {
+                    title: "Retest Validation",
+                    desc: "Where included, remediation is retested to verify fixes.",
+                  },
+                ].map((deliv, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/10 rounded-xl p-3 hover:border-[#f13024]/60 transition-all flex flex-col justify-center"
+                  >
+                    <div className="flex items-center gap-x-2 text-accent font-bold text-xs mb-1">
+                      <HiShieldCheck className="text-base shrink-0" />
+                      <span>{deliv.title}</span>
+                    </div>
+                    <p className="text-[11px] text-white/60 font-light leading-relaxed">
+                      {deliv.desc}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+          </div>
+
+          {/* Bottom Action (Anchored stationary position) */}
+          <div className="mt-3.5 flex justify-center xl:justify-start shrink-0">
             <Link
               href="#contact"
               onClick={handleScrollToContact}

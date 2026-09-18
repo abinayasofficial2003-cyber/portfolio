@@ -60,15 +60,15 @@ export interface CyberSkill {
   name: string;
   shortName: string;
   category:
-    | "Web & API Security"
-    | "Mobile Security"
-    | "Network Security"
-    | "Cloud Security"
-    | "Threat Modeling"
-    | "DevSecOps"
-    | "Security Tools"
-    | "Programming & Platforms"
-    | "Security Monitoring";
+  | "Web & API Security"
+  | "Mobile Security"
+  | "Network Security"
+  | "Cloud Security"
+  | "Threat Modeling"
+  | "DevSecOps"
+  | "Security Tools"
+  | "Programming & Platforms"
+  | "Security Monitoring";
   color: string;
   Icon: React.ElementType;
   vector: string;
@@ -653,11 +653,7 @@ export default function SkillsSection() {
               Securing systems with <span className="text-accent">modern technologies .</span>
             </h2>
 
-            {/* Inline Mini Badge */}
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#f13024]/15 border border-[#f13024]/40 text-[10px] font-mono text-[#f13024] shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#f13024] animate-pulse" />
-              <span>45+ CAPABILITIES</span>
-            </span>
+
           </motion.div>
 
           {/* Subtitle in Cursive / Serif Style */}
@@ -685,11 +681,10 @@ export default function SkillsSection() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3 py-1 rounded-full text-[11px] font-mono transition-all duration-300 cursor-pointer border ${
-                    isSelected
+                  className={`px-3 py-1 rounded-full text-[11px] font-mono transition-all duration-300 cursor-pointer border ${isSelected
                       ? "bg-[#f13024] text-white font-semibold border-[#f13024] shadow-[0_0_15px_rgba(241,48,36,0.6)]"
                       : "bg-black/60 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/30 border-white/10"
-                  }`}
+                    }`}
                 >
                   {cat.label}
                 </button>
@@ -729,13 +724,12 @@ export default function SkillsSection() {
                         scale: isHovered ? 1.25 : isMatch ? 1 : 0.95,
                       }}
                       transition={{ duration: 0.18 }}
-                      className={`relative w-12 h-12 sm:w-14 sm:h-14 xl:w-15 xl:h-15 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 cursor-pointer backdrop-blur-md border ${
-                        isHovered
+                      className={`relative w-12 h-12 sm:w-14 sm:h-14 xl:w-15 xl:h-15 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 cursor-pointer backdrop-blur-md border ${isHovered
                           ? "bg-black/95 border-[#f13024] shadow-[0_0_30px_rgba(241,48,36,0.9)] z-30"
                           : isMatch
-                          ? "bg-black/55 border-white/15 hover:border-white/40 shadow-[0_6px_20px_rgba(0,0,0,0.6)] z-10"
-                          : "bg-black/30 border-white/5 grayscale"
-                      }`}
+                            ? "bg-black/55 border-white/15 hover:border-white/40 shadow-[0_6px_20px_rgba(0,0,0,0.6)] z-10"
+                            : "bg-black/30 border-white/5 grayscale"
+                        }`}
                     >
                       {/* Icon */}
                       <IconComponent

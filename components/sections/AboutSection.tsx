@@ -283,10 +283,10 @@ const AboutSection = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ amount: 0.3 }}
-            className="xl:col-span-4 flex flex-col justify-center"
+            className="xl:col-span-4 flex flex-col justify-start xl:pt-4"
           >
-            {/* Tab navigation buttons top-aligned */}
-            <div className="flex gap-1.5 sm:gap-2 p-1 rounded-xl bg-black/50 border border-white/10 w-max mx-auto xl:mx-0 mb-3.5 font-mono text-xs">
+            {/* Tab navigation buttons top-aligned (Stationary) */}
+            <div className="flex gap-1.5 sm:gap-2 p-1 rounded-xl bg-black/50 border border-white/10 w-max mx-auto xl:mx-0 mb-3.5 font-mono text-xs shrink-0">
               {aboutData.map((item, itemI) => (
                 <button
                   key={itemI}
@@ -301,8 +301,9 @@ const AboutSection = () => {
               ))}
             </div>
 
-            {/* Tab Content Cards */}
-            <div className="flex flex-col gap-y-2.5 max-h-[360px] overflow-y-auto pr-1">
+            {/* Tab Content Cards (Fixed height: zero jumping) */}
+            <div className="h-[310px] sm:h-[330px] xl:h-[340px] flex flex-col gap-y-2.5 overflow-y-auto pr-1">
+
               {aboutData[index].info.map((item, itemI) => (
                 <motion.div
                   key={itemI}

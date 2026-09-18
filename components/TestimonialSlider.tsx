@@ -41,42 +41,56 @@ const TestimonialSlider = () => {
         clickable: true,
       }}
       modules={[Navigation, Pagination]}
-      className="h-[360px] sm:h-100"
+      className="h-[270px] sm:h-[290px] w-full"
     >
       {testimonialData.map((person, i) => (
         <SwiperSlide key={i}>
-          <div className="flex flex-col items-center md:flex-row gap-x-8 h-full px-6 sm:px-16">
-            <div className="w-full max-w-75 flex flex-col xl:justify-center items-center relative mx-auto xl:mx-0">
-              <div className="flex flex-col justify-center text-center">
-                <div className="mb-2 mx-auto ring-2 ring-accent/30 rounded-full p-1">
+          <div className="h-full w-full bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/10 rounded-2xl p-5 sm:p-6 flex flex-col justify-between text-left relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#f13024]/10 rounded-full blur-2xl pointer-events-none" />
+
+            {/* Top row: Client info & Star Rating */}
+            <div className="flex items-center justify-between gap-3 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="relative w-12 h-12 rounded-full ring-2 ring-accent/40 p-0.5 shrink-0">
                   <Image
                     src={person.image}
-                    width={90}
-                    height={90}
+                    width={48}
+                    height={48}
                     alt={person.name}
-                    className="rounded-full"
+                    className="rounded-full object-cover"
                   />
                 </div>
-
-                <div className="text-base sm:text-lg font-semibold text-white">{person.name}</div>
-
-                <div className="text-[11px] uppercase font-mono text-accent tracking-wider">
-                  {person.position}
+                <div>
+                  <div className="text-sm sm:text-base font-bold text-white leading-tight">
+                    {person.name}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] font-mono text-accent uppercase tracking-wider">
+                    {person.position}
+                  </div>
                 </div>
+              </div>
+
+              {/* Star Rating */}
+              <div className="text-accent text-xs tracking-widest hidden sm:block">
+                ★★★★★
               </div>
             </div>
 
-            <div className="flex-1 flex flex-col justify-center before:w-px xl:before:bg-white/20 xl:before:absolute xl:before:left-0 xl:before:h-50 relative xl:pl-16">
-              <div className="mb-3">
-                <FaQuoteLeft
-                  className="text-3xl xl:text-5xl text-accent/30 mx-auto md:mx-0"
-                  aria-hidden
-                />
-              </div>
-
-              <div className="text-sm sm:text-base xl:text-lg text-center md:text-left text-white/80 font-light leading-relaxed">
+            {/* Message Body */}
+            <div className="relative z-10 my-auto py-2">
+              <FaQuoteLeft className="text-xl text-accent/30 mb-1.5" aria-hidden />
+              <p className="text-xs sm:text-[13px] text-white/80 font-light leading-relaxed italic">
                 &quot;{person.message}&quot;
-              </div>
+              </p>
+            </div>
+
+            {/* Bottom Footer Badge */}
+            <div className="flex items-center justify-between text-[10px] font-mono text-white/40 pt-2 border-t border-white/5 relative z-10">
+              <span className="text-emerald-400/90 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                VERIFIED ENGAGEMENT
+              </span>
+              <span>CONFIRMED REMEDIATION</span>
             </div>
           </div>
         </SwiperSlide>
@@ -84,5 +98,6 @@ const TestimonialSlider = () => {
     </Swiper>
   );
 };
+
 
 export default TestimonialSlider;
