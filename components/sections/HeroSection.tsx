@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 import ParticlesContainer from "@/components/ParticlesContainer";
 import ProjectsBtn from "@/components/ProjectsBtn";
 import Avatar from "@/components/Avatar";
+import avatarImg from "@/public/avatar.png";
 import { fadeIn } from "@/variants";
 
 const HeroSection = () => {
@@ -57,9 +59,40 @@ const HeroSection = () => {
             Web Security • API Security • Mobile Security • Network Security
           </motion.div>
 
-          <div className="flex justify-center xl:hidden relative">
-            <ProjectsBtn />
-          </div>
+          {/* Mobile View: Avatar with small bg-explosion in place of circular projects button */}
+          <motion.div
+            variants={fadeIn("up", 0.4)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="flex flex-col items-center justify-center xl:hidden relative mt-1 mb-3"
+          >
+            <div className="relative w-[230px] sm:w-[270px] h-[250px] sm:h-[290px] flex items-end justify-center">
+              {/* Explosion background in small size matching the UI */}
+              <div
+                role="img"
+                className="w-full h-full absolute inset-0 bg-explosion bg-contain bg-center bg-no-repeat mix-blend-color-dodge pointer-events-none scale-110 opacity-90"
+                aria-hidden
+              />
+
+              {/* Avatar Image */}
+              <Image
+                src={avatarImg}
+                alt="Abinaya S"
+                priority
+                className="relative z-10 w-auto h-full max-h-[240px] sm:max-h-[280px] object-contain object-bottom select-none pointer-events-none drop-shadow-[0_10px_25px_rgba(0,0,0,0.85)]"
+              />
+            </div>
+
+            {/* Mobile Request Assessment Button */}
+            <Link
+              href="#contact"
+              onClick={handleScrollToContact}
+              className="mt-3 btn rounded-full border border-white/40 px-6 h-9 transition-all duration-300 flex items-center justify-center hover:border-accent hover:text-accent font-light text-xs uppercase tracking-wider bg-black/50 backdrop-blur-sm z-10"
+            >
+              Request Assessment
+            </Link>
+          </motion.div>
           <motion.div
             variants={fadeIn("down", 0.4)}
             initial="hidden"
