@@ -68,14 +68,14 @@ const ApproachSection = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-16 overflow-hidden">
+    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-16 overflow-visible xl:overflow-hidden">
       <CyberAtmosphere
         watermarkText="TESTING PIPELINE"
         sectionCode="03 // ATTACK SURFACE & AUDIT"
       />
       <Circles />
 
-      <div className="container mx-auto h-full max-h-[92vh] flex flex-col xl:flex-row gap-x-8 items-center justify-between z-10 pt-16 sm:pt-18 xl:pt-20 pb-3">
+      <div className="container mx-auto h-auto min-h-screen xl:h-full xl:max-h-[92vh] flex flex-col xl:flex-row gap-x-8 items-center justify-between z-10 pt-20 sm:pt-22 xl:pt-20 pb-24 xl:pb-3">
         {/* Left Column: Heading & 3D Model */}
         <div className="flex-1 flex flex-col justify-center max-w-lg text-center xl:text-left">
           <motion.div
@@ -176,8 +176,8 @@ const ApproachSection = () => {
             </button>
           </div>
 
-          {/* FIXED-HEIGHT CONTENT CONTAINER (Zero layout shift on tab change) */}
-          <div className="h-[310px] sm:h-[325px] xl:h-[335px] w-full relative overflow-hidden">
+          {/* FIXED-HEIGHT CONTENT CONTAINER ON DESKTOP, NATURAL COMFORTABLE HEIGHT ON MOBILE */}
+          <div className="min-h-[260px] h-auto xl:h-[335px] w-full relative overflow-visible xl:overflow-hidden">
             {/* Tab 1: 6-Phase Workflow */}
             {activeTab === "workflow" && (
               <motion.div

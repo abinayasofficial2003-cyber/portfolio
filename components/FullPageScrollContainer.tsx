@@ -72,6 +72,9 @@ export default function FullPageScrollContainer({
     };
 
     const handleWheel = (e: WheelEvent) => {
+      // Allow natural continuous scrolling on mobile view
+      if (window.innerWidth < 1200) return;
+
       // 1. Check if target is inside an internally scrollable element
       let target = e.target as HTMLElement | null;
       let isInsideScrollable = false;
@@ -130,8 +133,9 @@ export default function FullPageScrollContainer({
       }
     };
 
-    // Keyboard navigation
+    // Keyboard navigation (desktop only)
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (window.innerWidth < 1200) return;
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
@@ -164,13 +168,15 @@ export default function FullPageScrollContainer({
       }
     };
 
-    // Touch swipe navigation for mobile & tablets
+    // Touch swipe navigation for desktop touch screens (leave mobile to native continuous scroll)
     let touchStartY = 0;
     const handleTouchStart = (e: TouchEvent) => {
+      if (window.innerWidth < 1200) return;
       touchStartY = e.touches[0].clientY;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
+      if (window.innerWidth < 1200) return;
       const touchEndY = e.changedTouches[0].clientY;
       const diffY = touchStartY - touchEndY;
 
@@ -206,7 +212,7 @@ export default function FullPageScrollContainer({
     <div
       ref={containerRef}
       id="fullpage-scroll-container"
-      className="h-screen h-[100dvh] w-full overflow-y-scroll overflow-x-hidden snap-y snap-mandatory scroll-smooth relative [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      className="w-full relative min-h-screen overflow-y-auto overflow-x-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden xl:h-screen xl:h-[100dvh] xl:overflow-y-scroll xl:overflow-x-hidden xl:snap-y xl:snap-mandatory"
     >
       {children}
     </div>

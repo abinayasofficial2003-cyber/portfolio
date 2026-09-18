@@ -19,15 +19,15 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="bg-primary/60 h-full w-full h-screen relative overflow-hidden">
-      <div className="w-full h-full bg-linear-to-r from-primary/10 via-black/30 to-black/10">
-        <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
+    <div className="bg-primary/60 w-full min-h-screen xl:h-screen xl:h-[100dvh] relative overflow-hidden flex items-center justify-center">
+      <div className="w-full h-full bg-linear-to-r from-primary/10 via-black/30 to-black/10 flex items-center justify-center">
+        <div className="text-center flex flex-col justify-center pt-20 sm:pt-24 xl:pt-40 pb-24 xl:pb-0 xl:text-left h-full container mx-auto z-10">
           <motion.h1
             variants={fadeIn("down", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h1"
+            className="h1 text-[26px] sm:text-[34px] xl:text-[54px] 2xl:text-[60px] leading-tight mb-3 sm:mb-6"
           >
             ABINAYA S <br />
             <span className="text-accent">
@@ -40,7 +40,7 @@ const HeroSection = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-4 xl:mb-6"
+            className="text-xs sm:text-sm xl:text-base max-w-sm sm:max-w-md xl:max-w-xl mx-auto xl:mx-0 mb-3 xl:mb-6 text-white/70 font-light"
           >
             I help businesses identify security vulnerabilities across web
             applications, APIs, mobile applications, and network environments
@@ -52,7 +52,7 @@ const HeroSection = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="text-xs font-semibold tracking-wider text-accent uppercase mb-8 max-w-sm xl:max-w-xl mx-auto xl:mx-0"
+            className="text-[11px] sm:text-xs font-semibold tracking-wider text-accent uppercase mb-6 sm:mb-8 max-w-sm xl:max-w-xl mx-auto xl:mx-0"
           >
             Web Security • API Security • Mobile Security • Network Security
           </motion.div>

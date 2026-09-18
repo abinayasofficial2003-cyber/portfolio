@@ -630,7 +630,7 @@ export default function SkillsSection() {
   const [hoveredSkill, setHoveredSkill] = useState<CyberSkill | null>(null);
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-14 overflow-hidden select-none bg-primary/50">
+    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-14 overflow-visible xl:overflow-hidden select-none bg-primary/50">
       <CyberAtmosphere
         watermarkText="CYBER ARSENAL"
         sectionCode="02 // COMBAT-VERIFIED ARSENAL"
@@ -638,7 +638,7 @@ export default function SkillsSection() {
       <Circles />
 
       {/* Main Foreground Container */}
-      <div className="container mx-auto h-full max-h-[96vh] flex flex-col justify-between items-center z-10 pt-16 sm:pt-18 xl:pt-20 pb-3">
+      <div className="container mx-auto h-auto min-h-screen xl:h-full xl:max-h-[96vh] flex flex-col justify-between items-center z-10 pt-20 sm:pt-22 xl:pt-20 pb-24 xl:pb-3">
         {/* COMPACT STREAMLINED HEADER */}
         <div className="text-center max-w-3xl mx-auto w-full">
           <motion.div
@@ -673,7 +673,7 @@ export default function SkillsSection() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap max-w-4xl mx-auto px-2 mb-1"
+            className="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar max-w-full sm:max-w-4xl mx-auto px-2 py-1.5 mb-2"
           >
             {CATEGORIES.map((cat) => {
               const isSelected = activeCategory === cat.id;
@@ -681,7 +681,7 @@ export default function SkillsSection() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3 py-1 rounded-full text-[11px] font-mono transition-all duration-300 cursor-pointer border ${isSelected
+                  className={`px-3 py-1 rounded-full text-[11px] font-mono transition-all duration-300 cursor-pointer border whitespace-nowrap shrink-0 ${isSelected
                       ? "bg-[#f13024] text-white font-semibold border-[#f13024] shadow-[0_0_15px_rgba(241,48,36,0.6)]"
                       : "bg-black/60 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/30 border-white/10"
                     }`}

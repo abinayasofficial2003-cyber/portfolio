@@ -240,7 +240,7 @@ export default function CyberCoverflow3D() {
         ref={stageRef}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative w-full h-[460px] sm:h-[480px] xl:h-[495px] flex items-center justify-center overflow-hidden"
+        className="relative w-full h-[430px] sm:h-[480px] xl:h-[495px] flex items-center justify-center overflow-hidden"
         style={{
           perspective: "1200px",
           transformStyle: "preserve-3d",
@@ -266,6 +266,10 @@ export default function CyberCoverflow3D() {
           let zIndex = 1;
           let brightness = 100;
 
+          const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+          const shiftOne = isMobile ? 120 : 230;
+          const shiftTwo = isMobile ? 220 : 410;
+
           if (isCenter) {
             translateX = 0;
             translateZ = 0;
@@ -276,7 +280,7 @@ export default function CyberCoverflow3D() {
             brightness = 100;
           } else if (isAbsOne) {
             const dir = offset > 0 ? 1 : -1;
-            translateX = dir * 230; // Shift left or right
+            translateX = dir * shiftOne; // Shift left or right
             translateZ = -140; // Step back in 3D
             rotateY = dir * -38; // Angle inwards towards center!
             scale = 0.88;
@@ -285,7 +289,7 @@ export default function CyberCoverflow3D() {
             brightness = 75;
           } else if (isAbsTwo) {
             const dir = offset > 0 ? 1 : -1;
-            translateX = dir * 410; // Outer wings
+            translateX = dir * shiftTwo; // Outer wings
             translateZ = -260; // Further back in 3D
             rotateY = dir * -52; // Steeper angle
             scale = 0.74;
@@ -321,7 +325,7 @@ export default function CyberCoverflow3D() {
                 filter: `brightness(${brightness}%)`,
                 transition: "transform 0.65s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.65s ease, filter 0.65s ease",
               }}
-              className={`absolute w-[310px] sm:w-[350px] xl:w-[380px] h-[430px] sm:h-[450px] xl:h-[465px] rounded-2xl bg-gradient-to-b from-[#1c1e36]/95 via-[#131424]/98 to-[#0b0c16]/98 border p-5 flex flex-col justify-between shadow-[0_20px_50px_rgba(0,0,0,0.85)] cursor-pointer overflow-hidden ${isCenter
+              className={`absolute w-[290px] sm:w-[350px] xl:w-[380px] h-[410px] sm:h-[450px] xl:h-[465px] rounded-2xl bg-gradient-to-b from-[#1c1e36]/95 via-[#131424]/98 to-[#0b0c16]/98 border p-4 sm:p-5 flex flex-col justify-between shadow-[0_20px_50px_rgba(0,0,0,0.85)] cursor-pointer overflow-hidden ${isCenter
                 ? "border-[#f13024] shadow-[0_0_35px_rgba(241,48,36,0.3)] pointer-events-auto"
                 : "border-white/10 hover:border-white/30"
                 }`}

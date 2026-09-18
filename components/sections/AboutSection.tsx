@@ -88,26 +88,26 @@ const AboutSection = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative px-6 sm:px-12 xl:px-16 overflow-hidden bg-primary/40">
+    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-16 overflow-visible xl:overflow-hidden bg-primary/40">
       <CyberAtmosphere
         watermarkText="SECURITY IDENTITY"
         sectionCode="01 // OPERATOR PROFILE & CREDENTIALS"
       />
       <Circles />
 
-      <div className="container mx-auto h-full max-h-[88vh] flex flex-col justify-center z-10 py-4">
+      <div className="container mx-auto h-auto min-h-screen xl:h-full xl:max-h-[88vh] flex flex-col justify-center z-10 pt-20 sm:pt-24 xl:pt-4 pb-24 xl:pb-4">
         {/* Perfectly Balanced 3-Column Grid */}
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 2xl:gap-8 items-center">
-          {/* COLUMN 1: Avatar Showcase with Cyber Holographic Frame (xl: 4 cols) */}
+          {/* COLUMN 1: Avatar Showcase with Cyber Holographic Frame (xl: 4 cols, displayed on mobile too!) */}
           <motion.div
-            initial={{ x: -60, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ amount: 0.3 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden xl:flex xl:col-span-4 flex-col items-center justify-center relative"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="flex order-2 xl:order-1 xl:col-span-4 flex-col items-center justify-center relative my-4 xl:my-0"
           >
             {/* Holographic Frame Container */}
-            <div className="relative w-full max-w-[340px] 2xl:max-w-[380px] h-[460px] 2xl:h-[500px] rounded-2xl bg-gradient-to-t from-[#f13024]/15 via-black/40 to-transparent border border-white/10 p-2 flex items-end justify-center overflow-hidden group shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
+            <div className="relative w-full max-w-[260px] sm:max-w-[300px] xl:max-w-[340px] 2xl:max-w-[380px] h-[340px] sm:h-[400px] xl:h-[460px] 2xl:h-[500px] rounded-2xl bg-gradient-to-t from-[#f13024]/15 via-black/40 to-transparent border border-white/10 p-2 flex items-end justify-center overflow-hidden group shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
               {/* Corner crosshairs */}
               <div className="absolute top-2 left-2 text-[10px] font-mono text-[#f13024]/60 select-none">+</div>
               <div className="absolute top-2 right-2 text-[10px] font-mono text-[#f13024]/60 select-none">+</div>
@@ -136,7 +136,7 @@ const AboutSection = () => {
                 src={avatarImg}
                 alt="Abinaya S"
                 priority
-                className="w-auto h-full max-h-[440px] 2xl:max-h-[480px] object-contain object-bottom select-none pointer-events-none drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] z-10"
+                className="w-auto h-full max-h-[320px] sm:max-h-[380px] xl:max-h-[440px] 2xl:max-h-[480px] object-contain object-bottom select-none pointer-events-none drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] z-10"
               />
 
               {/* Operator Badge anchored neatly to the bottom */}
@@ -151,7 +151,7 @@ const AboutSection = () => {
           </motion.div>
 
           {/* COLUMN 2: Bio & Capability Metrics (xl: 4 cols) */}
-          <div className="xl:col-span-4 flex flex-col justify-center text-center xl:text-left">
+          <div className="order-1 xl:order-2 xl:col-span-4 flex flex-col justify-center text-center xl:text-left">
             {/* Top Terminal Badge */}
             <motion.div
               variants={fadeIn("down", 0.1)}
@@ -244,7 +244,7 @@ const AboutSection = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ amount: 0.3 }}
-            className="xl:col-span-4 flex flex-col justify-start xl:pt-4"
+            className="order-3 xl:order-3 xl:col-span-4 flex flex-col justify-start xl:pt-4 mt-2 xl:mt-0"
           >
             {/* Tab navigation buttons top-aligned (Stationary) */}
             <div className="flex gap-1.5 sm:gap-2 p-1 rounded-xl bg-black/50 border border-white/10 w-max mx-auto xl:mx-0 mb-3.5 font-mono text-xs shrink-0">
@@ -262,8 +262,8 @@ const AboutSection = () => {
               ))}
             </div>
 
-            {/* Tab Content Cards (Fixed height: zero jumping) */}
-            <div className="h-[255px] sm:h-[265px] xl:h-[275px] flex flex-col gap-y-2.5 overflow-y-auto pr-1">
+            {/* Tab Content Cards (Fixed height on desktop, comfortable height on mobile) */}
+            <div className="min-h-[250px] h-auto xl:h-[275px] flex flex-col gap-y-2.5 overflow-y-auto pr-1">
               {aboutData[index].info.map((item, itemI) => (
                 <motion.div
                   key={itemI}

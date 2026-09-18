@@ -16,7 +16,7 @@ export default function Section3DWrapper({
   return (
     <section
       id={id}
-      className={`h-screen h-[100dvh] w-full snap-start snap-always relative overflow-hidden flex-shrink-0 ${className}`}
+      className={`w-full relative overflow-visible flex-shrink-0 min-h-screen h-auto flex flex-col justify-center xl:h-screen xl:h-[100dvh] xl:overflow-hidden xl:snap-start xl:snap-always ${className}`}
     >
       {children}
     </section>

@@ -20,13 +20,13 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-14 overflow-hidden">
+    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-14 overflow-visible xl:overflow-hidden">
       <CyberAtmosphere
         watermarkText="CLIENT TRUST"
         sectionCode="05 // FEEDBACK & FAQS"
       />
 
-      <div className="container mx-auto h-full max-h-[92vh] flex flex-col justify-between z-10 pt-16 sm:pt-18 xl:pt-20 pb-3">
+      <div className="container mx-auto h-auto min-h-screen xl:h-full xl:max-h-[92vh] flex flex-col justify-between z-10 pt-20 sm:pt-22 xl:pt-20 pb-24 xl:pb-3">
         {/* COMPACT TOP HEADER */}
         <div className="text-center max-w-2xl mx-auto w-full">
           <motion.div

@@ -189,7 +189,7 @@ export default function CyberOrb3D() {
   }, []);
 
   return (
-    <div className="relative w-full h-[320px] sm:h-[380px] flex items-center justify-center">
+    <div className="relative w-full h-[220px] sm:h-[280px] xl:h-[340px] flex items-center justify-center">
       <div
         ref={containerRef}
         className="w-full h-full cursor-grab active:cursor-grabbing"

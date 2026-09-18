@@ -78,20 +78,18 @@ const Nav = () => {
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
   ) => {
-    if (pathname === "/") {
-      e.preventDefault();
-      const el = document.getElementById(targetId);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-        window.history.replaceState(null, "", `#${targetId}`);
-        setActiveSection(targetId);
-      }
+    e.preventDefault();
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      window.history.replaceState(null, "", `#${targetId}`);
+      setActiveSection(targetId);
     }
   };
 
   return (
-    <nav className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen pointer-events-none">
-      <div className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-7 px-4 md:px-32 xl:px-0 h-20 xl:h-max py-8 bg-white/10 border border-white/10 text-2xl xl:text-xl xl:rounded-full pointer-events-auto shadow-2xl">
+    <nav className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-auto xl:top-0 w-full xl:w-16 xl:max-w-md xl:h-screen pointer-events-none">
+      <div className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-7 px-4 sm:px-12 md:px-24 xl:px-0 h-16 xl:h-max py-2 xl:py-8 bg-black/85 backdrop-blur-xl border-t border-white/15 xl:border xl:border-white/10 xl:bg-white/10 text-xl xl:text-xl xl:rounded-full pointer-events-auto shadow-[0_-10px_30px_rgba(0,0,0,0.8)] xl:shadow-2xl">
         {navData.map((link, i) => {
           const isActive = activeSection === link.targetId;
 

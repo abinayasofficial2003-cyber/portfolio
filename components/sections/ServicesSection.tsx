@@ -133,7 +133,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative px-6 sm:px-12 xl:px-16 overflow-hidden bg-primary/40">
+    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-16 overflow-visible xl:overflow-hidden bg-primary/40">
       <CyberAtmosphere
         watermarkText="SECURITY SERVICES"
         sectionCode="02 // TESTING SCOPE & AUDITING"
@@ -141,7 +141,7 @@ const ServicesSection = () => {
       <Circles />
 
       {/* Main Container with generous right padding to keep safe from Floating Nav */}
-      <div className="container mx-auto h-full max-h-[88vh] flex flex-col justify-center z-10 py-4 pr-6 sm:pr-10 xl:pr-20">
+      <div className="container mx-auto h-auto min-h-screen xl:h-full xl:max-h-[88vh] flex flex-col justify-center z-10 pt-20 sm:pt-24 xl:pt-4 pb-24 xl:pb-4 pr-4 sm:pr-10 xl:pr-20">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 2xl:gap-10 items-center min-w-0">
           {/* Left Column: Mission, Key Pillars, Tabs, CTA (5 cols) */}
           <div className="xl:col-span-5 flex flex-col justify-center text-center xl:text-left">

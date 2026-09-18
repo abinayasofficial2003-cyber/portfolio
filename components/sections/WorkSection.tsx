@@ -21,7 +21,7 @@ const WorkSection = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-14 overflow-hidden">
+    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-14 overflow-visible xl:overflow-hidden">
       <CyberAtmosphere
         watermarkText="SECURITY AUDITS"
         sectionCode="04 // ENGAGEMENTS & FINDINGS"
@@ -29,7 +29,7 @@ const WorkSection = () => {
       <Circles />
 
       {/* Main Container with generous top clearance from transparent AegisSec header */}
-      <div className="container mx-auto h-full max-h-[94vh] flex flex-col justify-center z-10 pt-20 sm:pt-22 xl:pt-24 pb-2 pr-2 sm:pr-8 xl:pr-16">
+      <div className="container mx-auto h-auto min-h-screen xl:h-full xl:max-h-[94vh] flex flex-col justify-center z-10 pt-20 sm:pt-22 xl:pt-24 pb-24 xl:pb-2 pr-2 sm:pr-8 xl:pr-16">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 mb-1">
           <div>

@@ -98,13 +98,13 @@ const ContactSection = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-16 overflow-hidden">
+    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-16 overflow-visible xl:overflow-hidden">
       <CyberAtmosphere
         watermarkText="GET IN TOUCH"
         sectionCode="06 // SECURITY INTAKE TRANSMISSION"
       />
 
-      <div className="container mx-auto h-full max-h-[88vh] flex flex-col justify-center z-10 py-4">
+      <div className="container mx-auto h-auto min-h-screen xl:h-full xl:max-h-[88vh] flex flex-col justify-center z-10 pt-20 sm:pt-24 xl:pt-4 pb-28 xl:pb-4">
         <div className="flex flex-col xl:flex-row gap-x-10 items-center justify-between">
           {/* Left Column: Heading & Contact Info */}
           <motion.div
