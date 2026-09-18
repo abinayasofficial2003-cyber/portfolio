@@ -9,9 +9,10 @@ import {
 export const socialData: { name: string; link: string; Icon: IconType }[] = [
   {
     name: "Github",
-    link: "https://github.com/Abinayasela",
+    link: "https://github.com/abinayasofficial2003-cyber",
     Icon: RiGithubLine,
   },
+
   {
     name: "LinkedIn",
     link: "https://linkedin.com",
