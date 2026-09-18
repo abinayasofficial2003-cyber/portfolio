@@ -28,10 +28,7 @@ export const faqList = [
     q: "How long does an assessment take?",
     a: "The duration depends on the application, scope, number of assets, access requirements, and depth of testing. Typical assessments range from 3 to 10 business days.",
   },
-  {
-    q: "How do I start?",
-    a: "Submit a security assessment request with details about your application or environment. I will review the requirement and discuss the appropriate assessment scope.",
-  },
+
 ];
 
 export default function FaqSection() {
@@ -48,11 +45,10 @@ export default function FaqSection() {
         return (
           <div
             key={idx}
-            className={`rounded-xl border transition-all duration-200 overflow-hidden ${
-              isOpen
+            className={`rounded-xl border transition-all duration-200 overflow-hidden ${isOpen
                 ? "bg-[#f13024]/10 border-[#f13024]/40 shadow-[0_0_15px_rgba(241,48,36,0.1)]"
                 : "bg-black/50 border-white/10 hover:border-white/20"
-            }`}
+              }`}
           >
             <button
               onClick={() => toggle(idx)}
@@ -63,9 +59,8 @@ export default function FaqSection() {
                 {item.q}
               </span>
               <HiChevronDown
-                className={`text-sm text-accent shrink-0 transition-transform duration-200 ${
-                  isOpen ? "rotate-180" : ""
-                }`}
+                className={`text-sm text-accent shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
 

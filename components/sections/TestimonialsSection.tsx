@@ -117,7 +117,7 @@ const TestimonialsSection = () => {
                 <span>Frequently Asked Questions</span>
               </div>
               <span className="text-[10px] text-white/50 font-mono">
-                7 QUESTIONS
+                6 QUESTIONS
               </span>
             </div>
 
