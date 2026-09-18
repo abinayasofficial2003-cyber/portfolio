@@ -43,7 +43,7 @@ const HeroSection = () => {
             className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-4 xl:mb-6"
           >
             I help businesses identify security vulnerabilities across web
-            applications, APIs, mobile applications, and network environments —
+            applications, APIs, mobile applications, and network environments
             and understand how to fix them.
           </motion.p>
 

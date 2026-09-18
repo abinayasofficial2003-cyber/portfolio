@@ -4,10 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  HiShieldCheck,
-  HiSparkles,
-} from "react-icons/hi2";
+import { HiShieldCheck } from "react-icons/hi2";
 
 import Circles from "@/components/Circles";
 import CyberAtmosphere from "@/components/CyberAtmosphere";
@@ -18,7 +15,6 @@ type AboutItem = {
   title: string;
   stage?: string;
   description?: string;
-  items?: string[];
 };
 
 type AboutCategory = {
@@ -34,87 +30,52 @@ const aboutData: AboutCategory[] = [
         title: "Certified Penetration Testing (CPT)",
         stage: "RedTeam Hacker Academy",
         description:
-          "Hands-on offensive security, penetration testing, and exploitation methodology.",
+          "Hands-on offensive security, penetration testing, exploitation methodology, and network defense.",
       },
       {
         title: "B.E. — Computer Science Engineering",
         stage: "Jeppiaar Institute of Technology • May 2025",
         description:
-          "Foundation in computer systems, algorithms, networking protocols, and application architecture.",
+          "Rigorous foundation in computer systems architecture, algorithms, network protocols, and application design.",
       },
     ],
   },
   {
-    title: "skills",
+    title: "experience",
     info: [
       {
-        title: "Core Specializations",
-        items: [
-          "Application Security",
-          "Penetration Testing",
-          "Vulnerability Assessment",
-          "Mobile Security",
-          "Cloud Security",
-          "Threat Modeling",
-          "Secure Code Review",
-          "DevSecOps",
-        ],
+        title: "Offensive Security Assessments",
+        stage: "VAPT Consultant",
+        description:
+          "Hands-on penetration testing and vulnerability assessments across web applications, REST APIs, and mobile systems.",
+      },
+      {
+        title: "Security Research & CTF Labs",
+        stage: "Hands-on Exploits",
+        description:
+          "Practical exploitation research across PortSwigger Web Security Academy, TryHackMe, and AWS Cloud CTF environments.",
       },
     ],
   },
   {
-    title: "toolkit",
+    title: "philosophy",
     info: [
       {
-        title: "Application Security",
-        items: [
-          "Burp Suite Pro",
-          "OWASP ZAP",
-          "JWT Toolkit",
-          "SQLmap",
-          "ffuf",
-          "Gobuster",
-        ],
-      },
-      {
-        title: "Mobile & Network",
-        items: [
-          "MobSF",
-          "Frida",
-          "ADB",
-          "Nmap",
-          "Nessus",
-          "Metasploit",
-          "Wireshark",
-        ],
-      },
-      {
-        title: "DevSecOps & Cloud",
-        items: ["SonarQube", "Trivy", "GitLeaks", "AWS CLI", "Docker"],
-      },
-    ],
-  },
-  {
-    title: "approach",
-    info: [
-      {
-        title: "Manual + Automated",
+        title: "Manual PoC Verification",
+        stage: "Zero False Positives",
         description:
-          "Combine security tools with manual testing to investigate application behavior beyond automated scans.",
+          "Every finding is manually confirmed with reproducible proof-of-concept steps to eliminate false positives entirely.",
       },
       {
-        title: "Validated Findings",
+        title: "Actionable Remediation Guidance",
+        stage: "Developer-First",
         description:
-          "Findings are reviewed and validated to eliminate false positives before reporting.",
-      },
-      {
-        title: "Clear Reporting",
-        description:
-          "Technical vulnerabilities are explained with severity, impact, and actionable remediation.",
+          "Prioritized remediation guidance and secure code examples designed for software engineering teams to patch swiftly.",
       },
     ],
   },
 ];
+
 
 const stats = [
   { label: "WEB", sub: "Applications" },
@@ -302,8 +263,7 @@ const AboutSection = () => {
             </div>
 
             {/* Tab Content Cards (Fixed height: zero jumping) */}
-            <div className="h-[310px] sm:h-[330px] xl:h-[340px] flex flex-col gap-y-2.5 overflow-y-auto pr-1">
-
+            <div className="h-[255px] sm:h-[265px] xl:h-[275px] flex flex-col gap-y-2.5 overflow-y-auto pr-1">
               {aboutData[index].info.map((item, itemI) => (
                 <motion.div
                   key={itemI}
@@ -331,49 +291,28 @@ const AboutSection = () => {
                       {item.description}
                     </p>
                   )}
-
-                  {item.items && (
-                    <div className="flex flex-wrap gap-1.5 mt-2 relative z-10">
-                      {item.items.map((it, i) => (
-                        <span
-                          key={i}
-                          className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/60 border border-white/10 text-white/90 hover:border-accent hover:text-accent transition-all duration-200"
-                        >
-                          {it}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </motion.div>
               ))}
+            </div>
 
-              {index === 1 && (
-                <div className="pt-1.5 text-left">
-                  <Link
-                    href="/#skills"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const el = document.getElementById("skills");
-                      if (el) {
-                        el.scrollIntoView({ behavior: "smooth" });
-                        window.history.replaceState(null, "", "#skills");
-                      }
-                    }}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#f13024]/15 hover:bg-[#f13024] border border-[#f13024]/40 hover:border-[#f13024] text-white font-mono text-[11px] transition-all duration-300 shadow-[0_0_15px_rgba(241,48,36,0.25)] hover:shadow-[0_0_20px_rgba(241,48,36,0.6)] cursor-pointer group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:bg-white animate-pulse" />
-                    <span>EXPLORE 45+ SKILLS ARSENAL</span>
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </Link>
-                </div>
-              )}
-
-              {index === 2 && (
-                <div className="flex items-center gap-2 text-[10px] font-mono text-white/40 pt-1 text-left">
-                  <HiSparkles className="text-accent shrink-0" />
-                  <span>Security tools support the assessment; findings are manually verified.</span>
-                </div>
-              )}
+            {/* Persistent Bridge Link to Dedicated Skills & Arsenal Section */}
+            <div className="pt-3 text-left">
+              <Link
+                href="/#skills"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById("skills");
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth" });
+                    window.history.replaceState(null, "", "#skills");
+                  }
+                }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#f13024]/15 hover:bg-[#f13024] border border-[#f13024]/40 hover:border-[#f13024] text-white font-mono text-[11px] transition-all duration-300 shadow-[0_0_15px_rgba(241,48,36,0.25)] hover:shadow-[0_0_20px_rgba(241,48,36,0.6)] cursor-pointer group"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:bg-white animate-pulse" />
+                <span>EXPLORE 45+ SKILLS & TOOLKIT ARSENAL</span>
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </Link>
             </div>
           </motion.div>
         </div>
