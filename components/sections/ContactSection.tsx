@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { BsArrowRight } from "react-icons/bs";
-import { HiEnvelope, HiPhone, HiShieldCheck } from "react-icons/hi2";
+import { HiEnvelope, HiShieldCheck } from "react-icons/hi2";
 import { RiLinkedinLine } from "react-icons/ri";
 
 import CyberAtmosphere from "@/components/CyberAtmosphere";
@@ -32,91 +32,83 @@ const ContactSection = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const toggleScope = (scope: string) => {
-    setForm((prev) => ({
-      ...prev,
-      services: prev.services.includes(scope)
-        ? prev.services.filter((s) => s !== scope)
-        : [...prev.services, scope],
-    }));
+    setForm((prev) => {
+      const exists = prev.services.includes(scope);
+      return {
+        ...prev,
+        services: exists
+          ? prev.services.filter((s) => s !== scope)
+          : [...prev.services, scope],
+      };
+    });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (form.name.trim().length < 2) {
-      toast.error("Please enter your name");
-      return;
-    }
-
-    if (!form.email.includes("@")) {
-      toast.error("Please enter a valid email");
-      return;
-    }
-
-    if (form.message.trim().length < 5) {
-      toast.error("Please provide a requirement description");
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      toast.error("Please fill in all required fields (*).");
       return;
     }
 
     setIsLoading(true);
+    const toastId = toast.loading("Encrypting and dispatching assessment scope...");
 
     try {
-      const response = await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
-      const data = await response.json().catch(() => null);
+      const data = await res.json();
 
-      if (response.ok && data?.ok) {
-        toast.success(
-          "Assessment request received! I will get back to you promptly."
-        );
-        setForm({
-          name: "",
-          company: "",
-          email: "",
-          phone: "",
-          url: "",
-          services: [],
-          message: "",
-        });
-      } else {
-        toast.error(
-          data?.error ||
-            "Submission failed. Please email abinayaselsa@gmail.com directly."
-        );
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to transmit message.");
       }
-    } catch {
-      toast.error(
-        "Network error. Please email abinayaselsa@gmail.com directly."
+
+      toast.success(
+        "Assessment request received! Abinaya will review and respond shortly.",
+        { id: toastId, duration: 5000 }
       );
+      setForm({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        url: "",
+        services: [],
+        message: "",
+      });
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "Transmission failed. Try direct email.";
+      toast.error(message, { id: toastId, duration: 5000 });
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-16 overflow-visible xl:overflow-hidden">
+    <div className="w-full min-h-screen xl:h-full flex items-center justify-center relative px-4 sm:px-8 xl:px-14 select-none bg-primary/40 overflow-y-auto xl:overflow-hidden">
       <CyberAtmosphere
-        watermarkText="GET IN TOUCH"
-        sectionCode="06 // SECURITY INTAKE TRANSMISSION"
+        watermarkText="ENGAGE AEGIS"
+        sectionCode="04 // DISPATCH SECURITY DIRECTIVE"
       />
 
-      <div className="container mx-auto h-auto min-h-screen xl:h-full xl:max-h-[88vh] flex flex-col justify-center z-10 pt-20 sm:pt-24 xl:pt-4 pb-28 xl:pb-4">
-        <div className="flex flex-col xl:flex-row gap-x-10 items-center justify-between">
-          {/* Left Column: Heading & Contact Info */}
+      <div className="container mx-auto h-auto min-h-screen xl:h-full flex flex-col justify-center items-center z-10 pt-20 sm:pt-24 xl:pt-16 pb-24 xl:pb-6">
+        <div className="w-full max-w-5xl flex flex-col xl:flex-row items-center justify-between gap-8 xl:gap-12">
+          {/* Left Column: Context, Direct Reach & Trust Signals */}
           <motion.div
             variants={fadeIn("right", 0.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex-1 text-center xl:text-left mb-6 xl:mb-0"
+            className="flex-1 text-center xl:text-left w-full max-w-xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f13024]/10 border border-[#f13024]/30 text-xs font-mono text-[#f13024] w-max mx-auto xl:mx-0 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#f13024] animate-pulse" />
-              <span>DIRECT SECURITY CONSULTATION</span>
+            <div className="inline-flex items-center gap-x-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-mono mb-3">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+              Direct Engagement Channel
             </div>
 
             <h2 className="h2 text-[26px] sm:text-[34px] xl:text-[42px] mb-2 leading-tight">
@@ -147,43 +139,24 @@ const ContactSection = () => {
                 </div>
               </a>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                <a
-                  href="https://www.linkedin.com/in/abinayas2003/"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="flex items-center gap-x-3 p-3 rounded-xl bg-white/[0.04] border border-white/10 hover:border-accent/60 hover:shadow-[0_0_20px_rgba(241,48,36,0.2)] transition-all text-left group"
-                >
-                  <div className="text-xl text-[#0077b5] group-hover:scale-110 transition-transform">
-                    <RiLinkedinLine />
+              <a
+                href="https://www.linkedin.com/in/abinayas2003/"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="flex items-center gap-x-3.5 p-3 rounded-xl bg-white/[0.04] border border-white/10 hover:border-accent/60 hover:shadow-[0_0_20px_rgba(241,48,36,0.2)] transition-all text-left group"
+              >
+                <div className="text-xl text-[#0077b5] group-hover:scale-110 transition-transform">
+                  <RiLinkedinLine />
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono text-white/40 uppercase">
+                    LinkedIn
                   </div>
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-mono text-white/40 uppercase">
-                      LinkedIn
-                    </div>
-                    <div className="text-xs font-semibold text-white group-hover:text-accent transition-colors truncate">
-                      abinayas2003
-                    </div>
+                  <div className="text-xs sm:text-sm font-semibold text-white group-hover:text-accent transition-colors">
+                    linkedin.com/in/abinayas2003
                   </div>
-                </a>
-
-                <a
-                  href="tel:9150553911"
-                  className="flex items-center gap-x-3 p-3 rounded-xl bg-white/[0.04] border border-white/10 hover:border-accent/60 hover:shadow-[0_0_20px_rgba(241,48,36,0.2)] transition-all text-left group"
-                >
-                  <div className="text-xl text-accent group-hover:scale-110 transition-transform">
-                    <HiPhone />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-mono text-white/40 uppercase">
-                      Phone / WhatsApp
-                    </div>
-                    <div className="text-xs font-semibold text-white group-hover:text-accent transition-colors">
-                      +91 9150553911
-                    </div>
-                  </div>
-                </a>
-              </div>
+                </div>
+              </a>
 
               {/* Responsible Testing Notice */}
               <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10 text-left">
@@ -234,28 +207,16 @@ const ContactSection = () => {
               </div>
             </div>
 
-            <div className="flex gap-x-3">
-              <div className="flex-1">
-                <input
-                  type="email"
-                  required
-                  placeholder="Business Email *"
-                  className="input text-xs sm:text-sm !h-10"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  disabled={isLoading}
-                />
-              </div>
-              <div className="flex-1">
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  className="input text-xs sm:text-sm !h-10"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  disabled={isLoading}
-                />
-              </div>
+            <div>
+              <input
+                type="email"
+                required
+                placeholder="Business Email *"
+                className="input text-xs sm:text-sm !h-10"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                disabled={isLoading}
+              />
             </div>
 
             <div>
