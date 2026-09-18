@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { FaQuoteLeft } from "react-icons/fa";
+
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -50,31 +50,21 @@ const TestimonialSlider = () => {
 
             {/* Top row: Client info & Star Rating */}
             <div className="flex items-center justify-between gap-3 relative z-10">
-              <div className="flex items-center gap-3">
-                <div className="relative w-12 h-12 rounded-full ring-2 ring-accent/40 p-0.5 shrink-0">
-                  <Image
-                    src={person.image}
-                    width={48}
-                    height={48}
-                    alt={person.name}
-                    className="rounded-full object-cover"
-                  />
+              <div>
+                <div className="text-base sm:text-lg font-bold text-white leading-tight">
+                  {person.name}
                 </div>
-                <div>
-                  <div className="text-sm sm:text-base font-bold text-white leading-tight">
-                    {person.name}
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-accent uppercase tracking-wider">
-                    {person.position}
-                  </div>
+                <div className="text-[10px] sm:text-xs font-mono text-accent uppercase tracking-wider mt-0.5">
+                  {person.position}
                 </div>
               </div>
 
               {/* Star Rating */}
-              <div className="text-accent text-xs tracking-widest hidden sm:block">
+              <div className="text-accent text-xs sm:text-sm tracking-widest">
                 ★★★★★
               </div>
             </div>
+
 
             {/* Message Body */}
             <div className="relative z-10 my-auto py-2">
