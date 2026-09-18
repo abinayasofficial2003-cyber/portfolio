@@ -23,7 +23,7 @@ const HeroSection = () => {
   return (
     <div className="bg-primary/60 w-full min-h-screen xl:h-screen xl:h-[100dvh] relative overflow-hidden flex items-center justify-center">
       <div className="w-full h-full bg-linear-to-r from-primary/10 via-black/30 to-black/10 flex items-center justify-center">
-        <div className="text-center flex flex-col justify-center pt-20 sm:pt-24 xl:pt-40 pb-24 xl:pb-0 xl:text-left h-full container mx-auto z-10">
+        <div className="text-center flex flex-col justify-between pt-16 sm:pt-20 xl:pt-40 pb-0 xl:pb-0 xl:text-left h-full min-h-screen xl:min-h-0 container mx-auto z-10">
           <motion.h1
             variants={fadeIn("down", 0.2)}
             initial="hidden"
@@ -59,44 +59,30 @@ const HeroSection = () => {
             Web Security • API Security • Mobile Security • Network Security
           </motion.div>
 
-          {/* Mobile View: Avatar with seamless soft-faded bg-explosion (Zero hard edges, perfect fit) */}
+          {/* Mobile View: Avatar & Explosion placed from the bottom with top fade only on background */}
           <motion.div
             variants={fadeIn("up", 0.4)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="flex flex-col items-center justify-center xl:hidden relative mt-1 mb-2"
+            className="flex xl:hidden relative w-full justify-center items-end mt-auto pointer-events-none select-none"
           >
-            <div className="relative w-[230px] sm:w-[270px] h-[235px] sm:h-[275px] flex items-end justify-center">
-              {/* Ambient crimson cyber glow */}
-              <div className="absolute inset-0 w-full h-full bg-[#f13024]/25 rounded-full blur-2xl pointer-events-none" />
+            {/* Background explosion image placed from the bottom with top fade effect only */}
+            <div
+              role="img"
+              className="absolute bottom-0 inset-x-0 w-full h-[280px] sm:h-[340px] bg-explosion bg-cover bg-bottom bg-no-repeat mix-blend-color-dodge opacity-90 [mask-image:linear-gradient(to_bottom,transparent_0%,black_25%,black_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_25%,black_100%)]"
+              aria-hidden
+            />
 
-              {/* Seamless explosion background: focused on explosion texture with radial mask fade so there is zero black box */}
-              <div
-                role="img"
-                className="absolute inset-0 w-full h-full bg-explosion bg-cover bg-right bg-no-repeat mix-blend-color-dodge pointer-events-none scale-125 opacity-95 [mask-image:radial-gradient(circle_at_center,black_35%,transparent_72%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_35%,transparent_72%)]"
-                aria-hidden
+            {/* Avatar image placed from the bottom */}
+            <div className="relative z-10 flex items-end justify-center w-full max-w-[320px] sm:max-w-[380px] h-[280px] sm:h-[340px]">
+              <Image
+                src={avatarImg}
+                alt="Abinaya S"
+                priority
+                className="w-auto h-full max-h-[280px] sm:max-h-[340px] object-contain object-bottom drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]"
               />
-
-              {/* Avatar Image with soft bottom dissolve so her waist blends smoothly into the dark theme */}
-              <div className="relative z-10 w-full h-full flex items-end justify-center [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
-                <Image
-                  src={avatarImg}
-                  alt="Abinaya S"
-                  priority
-                  className="w-auto h-full max-h-[230px] sm:max-h-[270px] object-contain object-bottom select-none pointer-events-none drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)]"
-                />
-              </div>
             </div>
-
-            {/* Mobile Request Assessment Button */}
-            <Link
-              href="#contact"
-              onClick={handleScrollToContact}
-              className="mt-2.5 btn rounded-full border border-white/40 px-6 h-9 transition-all duration-300 flex items-center justify-center hover:border-accent hover:text-accent font-light text-xs uppercase tracking-wider bg-black/60 backdrop-blur-md z-10 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
-            >
-              Request Assessment
-            </Link>
           </motion.div>
           <motion.div
             variants={fadeIn("down", 0.4)}
